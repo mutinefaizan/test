@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Typing Test Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(45deg, #3B82F6, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-center gradient-text">Your Results</h1>
+        
+        <div class="space-y-6">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-blue-50 p-6 rounded-xl text-center">
+                    <i class="fas fa-tachometer-alt text-blue-500 text-xl mb-2"></i>
+                    <p class="text-sm text-gray-600 mb-1">Words Per Minute</p>
+                    <p id="resultWPM" class="text-3xl font-bold text-blue-600">0</p>
+                </div>
+                <div class="bg-green-50 p-6 rounded-xl text-center">
+                    <i class="fas fa-keyboard text-green-500 text-xl mb-2"></i>
+                    <p class="text-sm text-gray-600 mb-1">Characters Per Minute</p>
+                    <p id="resultCPM" class="text-3xl font-bold text-green-600">0</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-red-50 p-6 rounded-xl text-center">
+                    <i class="fas fa-exclamation-circle text-red-500 text-xl mb-2"></i>
+                    <p class="text-sm text-gray-600 mb-1">Errors</p>
+                    <p id="resultErrors" class="text-3xl font-bold text-red-600">0</p>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-xl text-center">
+                    <i class="fas fa-bullseye text-purple-500 text-xl mb-2"></i>
+                    <p class="text-sm text-gray-600 mb-1">Accuracy</p>
+                    <p id="resultAccuracy" class="text-3xl font-bold text-purple-600">0%</p>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-xl text-center">
+                <i class="fas fa-clock text-gray-500 text-xl mb-2"></i>
+                <p class="text-sm text-gray-600 mb-1">Time Taken</p>
+                <p id="resultTime" class="text-3xl font-bold text-gray-600">0s</p>
+            </div>
+        </div>
+        
+        <div class="mt-8 flex justify-center space-x-4">
+            <a href="test.html" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition-all duration-200 shadow-lg">
+                <i class="fas fa-redo mr-2"></i>Try Again
+            </a>
+            <a href="index.html" class="bg-gray-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-600 transition-all duration-200">
+                <i class="fas fa-home mr-2"></i>Home
+            </a>
+        </div>
+    </div>
+
+    <script>
+        window.onload = () => {
+            const wpm = localStorage.getItem('wpm') || 0;
+            const cpm = localStorage.getItem('cpm') || 0;
+            const errors = localStorage.getItem('errors') || 0;
+            const accuracy = localStorage.getItem('accuracy') || 0;
+            const time = localStorage.getItem('time') || 0;
+
+            document.querySelector('#resultWPM').innerText = wpm;
+            document.querySelector('#resultCPM').innerText = cpm;
+            document.querySelector('#resultErrors').innerText = errors;
+            document.querySelector('#resultAccuracy').innerText = accuracy + '%';
+            document.querySelector('#resultTime').innerText = time + 's';
+        };
+    </script>
+</body>
+</html>
